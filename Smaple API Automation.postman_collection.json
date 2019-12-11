@@ -164,6 +164,70 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "ExportPIIData",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"raw": "http://10.78.0.182/RequestCenter/nsapi/transaction/requisitions/exportPII?customerId=1&PIIOnly=true",
+							"protocol": "http",
+							"host": [
+								"10",
+								"78",
+								"0",
+								"182"
+							],
+							"path": [
+								"RequestCenter",
+								"nsapi",
+								"transaction",
+								"requisitions",
+								"exportPII"
+							],
+							"query": [
+								{
+									"description": "",
+									"equals": true,
+									"key": "customerId",
+									"value": "1"
+								},
+								{
+									"description": "",
+									"equals": true,
+									"key": "PIIOnly",
+									"value": "true"
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"description": "",
+								"key": "username",
+								"value": "admin"
+							},
+							{
+								"description": "",
+								"key": "password",
+								"value": "admin"
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		}
