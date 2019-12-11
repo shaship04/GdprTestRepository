@@ -1,0 +1,171 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Smaple API Automation",
+		"_postman_id": "0c5dd339-07a0-fe79-28cf-ab9339ad08f0",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GDPR Tests",
+			"description": "",
+			"item": [
+				{
+					"name": "GetPII Data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Body matches string\"] = responseBody.has(\"requisitionEntryId\");",
+									"",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var serviceId = JSON.parse(responseBody);",
+									"tests[\"Your test name\"] = serviceId.value === responseBody.value;",
+									"",
+									"",
+									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"raw": "http://10.78.0.182/RequestCenter/nsapi/transaction/requisitions/PII",
+							"protocol": "http",
+							"host": [
+								"10",
+								"78",
+								"0",
+								"182"
+							],
+							"path": [
+								"RequestCenter",
+								"nsapi",
+								"transaction",
+								"requisitions",
+								"PII"
+							],
+							"query": [
+								{
+									"key": "customerId",
+									"value": "1",
+									"equals": true,
+									"description": "",
+									"disabled": true
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Username",
+								"value": "admin",
+								"description": "",
+								"disabled": true
+							},
+							{
+								"key": "Password",
+								"value": "admin",
+								"description": "",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46YWRtaW4=",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Clear UserPIIData",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"",
+									"",
+									"tests[\"Status code name has string\"] = responseCode.name.has(\"OK\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"raw": "http://10.78.0.182/RequestCenter/nsapi/transaction/requisitions/clearUserData?customerId=1&replaceWithString=postman",
+							"protocol": "http",
+							"host": [
+								"10",
+								"78",
+								"0",
+								"182"
+							],
+							"path": [
+								"RequestCenter",
+								"nsapi",
+								"transaction",
+								"requisitions",
+								"clearUserData"
+							],
+							"query": [
+								{
+									"key": "customerId",
+									"value": "1",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "replaceWithString",
+									"value": "postman",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Username",
+								"value": "admin",
+								"description": ""
+							},
+							{
+								"key": "Password",
+								"value": "admin",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
