@@ -9,6 +9,9 @@
   "author": "shashi",
   "license": "ISC",
   "dependencies": {
-    "newman": "^4.5.7"
+    "newman": "^4.5.7",
+    "newman-reporter-html": "^1.0.5",
+    "reporter": "^0.1.0",
+    "reporters": "0.0.4"
   }
 }

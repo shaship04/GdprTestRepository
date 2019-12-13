@@ -19,15 +19,13 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
+									"",
 									"tests[\"Body matches string\"] = responseBody.has(\"requisitionEntryId\");",
 									"",
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									"",
 									"var serviceId = JSON.parse(responseBody);",
 									"tests[\"Your test name\"] = serviceId.value === responseBody.value;",
-									"",
-									"",
-									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
 									"",
 									""
 								]
@@ -36,13 +34,9 @@
 					],
 					"request": {
 						"url": {
-							"raw": "http://10.78.0.182/RequestCenter/nsapi/transaction/requisitions/PII",
-							"protocol": "http",
+							"raw": "{{url}}/RequestCenter/nsapi/transaction/requisitions/PII?customerId=1",
 							"host": [
-								"10",
-								"78",
-								"0",
-								"182"
+								"{{url}}"
 							],
 							"path": [
 								"RequestCenter",
@@ -56,8 +50,7 @@
 									"key": "customerId",
 									"value": "1",
 									"equals": true,
-									"description": "",
-									"disabled": true
+									"description": ""
 								}
 							],
 							"variable": []
@@ -66,15 +59,13 @@
 						"header": [
 							{
 								"key": "Username",
-								"value": "admin",
-								"description": "",
-								"disabled": true
+								"value": "{{username}}",
+								"description": ""
 							},
 							{
 								"key": "Password",
-								"value": "admin",
-								"description": "",
-								"disabled": true
+								"value": "{{password}}",
+								"description": ""
 							},
 							{
 								"key": "Content-Type",
@@ -100,6 +91,8 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
+									"",
+									"",
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									"",
 									"",
@@ -111,13 +104,9 @@
 					],
 					"request": {
 						"url": {
-							"raw": "http://10.78.0.182/RequestCenter/nsapi/transaction/requisitions/clearUserData?customerId=1&replaceWithString=postman",
-							"protocol": "http",
+							"raw": "{{url}}/RequestCenter/nsapi/transaction/requisitions/clearUserData?customerId=1",
 							"host": [
-								"10",
-								"78",
-								"0",
-								"182"
+								"{{url}}"
 							],
 							"path": [
 								"RequestCenter",
@@ -132,12 +121,6 @@
 									"value": "1",
 									"equals": true,
 									"description": ""
-								},
-								{
-									"key": "replaceWithString",
-									"value": "postman",
-									"equals": true,
-									"description": ""
 								}
 							],
 							"variable": []
@@ -146,12 +129,12 @@
 						"header": [
 							{
 								"key": "Username",
-								"value": "admin",
+								"value": "{{username}}",
 								"description": ""
 							},
 							{
 								"key": "Password",
-								"value": "admin",
+								"value": "{{password}}",
 								"description": ""
 							},
 							{
@@ -173,6 +156,8 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
+									"",
+									"",
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
 								]
 							}
@@ -180,13 +165,9 @@
 					],
 					"request": {
 						"url": {
-							"raw": "http://10.78.0.182/RequestCenter/nsapi/transaction/requisitions/exportPII?customerId=1&PIIOnly=true",
-							"protocol": "http",
+							"raw": "{{url}}/RequestCenter/nsapi/transaction/requisitions/exportPII?customerId=1&PIIOnly=true",
 							"host": [
-								"10",
-								"78",
-								"0",
-								"182"
+								"{{url}}"
 							],
 							"path": [
 								"RequestCenter",
@@ -197,16 +178,16 @@
 							],
 							"query": [
 								{
-									"description": "",
-									"equals": true,
 									"key": "customerId",
-									"value": "1"
+									"value": "1",
+									"equals": true,
+									"description": ""
 								},
 								{
-									"description": "",
-									"equals": true,
 									"key": "PIIOnly",
-									"value": "true"
+									"value": "true",
+									"equals": true,
+									"description": ""
 								}
 							],
 							"variable": []
@@ -214,16 +195,75 @@
 						"method": "GET",
 						"header": [
 							{
-								"description": "",
 								"key": "username",
-								"value": "admin"
+								"value": "{{username}}",
+								"description": ""
 							},
 							{
-								"description": "",
 								"key": "password",
-								"value": "admin"
+								"value": "{{password}}",
+								"description": ""
 							}
 						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "environment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"postman.setGlobalVariable(\"url\", \"http://10.78.0.182\");",
+									"postman.setGlobalVariable(\"username\", \"admin\");",
+									"postman.setGlobalVariable(\"password\", \"admin\");",
+									"",
+									"console.log(\"username:\"+data.userName);",
+									"console.log(\"password:\"+data.password);",
+									"console.log(\"url:\"+data.url);"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"raw": "https://postman-echo.com/get?url={{url}}&username={{username}}&password={{password}}",
+							"protocol": "https",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"get"
+							],
+							"query": [
+								{
+									"key": "url",
+									"value": "{{url}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
 						"body": {},
 						"description": ""
 					},
