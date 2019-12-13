@@ -4,7 +4,7 @@
   "description": "project for newman gdpr tests",
   "main": "index.js",
   "scripts": {
-    "testscript1”: "newman run Smaple\ API\ Automation.postman_collection.json"
+    "testscript”: "newman run Smaple\ API\ Automation.postman_collection.json"
   },
   "author": "shashi",
   "license": "ISC",
