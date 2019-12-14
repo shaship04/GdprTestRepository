@@ -1,17 +1,17 @@
 {
-  "name": "newmangdprpkg",
-  "version": "1.0.0",
-  "description": "project for newman gdpr tests",
-  "main": "index.js",
-  "scripts": {
-    "testscript”: "newman run/Smaple API Automation.postman_collection.json"
-  },
-  "author": "shashi",
-  "license": "ISC",
-  "dependencies": {
-    "newman": "^4.5.7",
-    "newman-reporter-html": "^1.0.5",
-    "reporter": "^0.1.0",
-    "reporters": "0.0.4"
-  }
+	"name": "newmangdprpkg",
+	"version": "1.0.0",
+	"description": "project for newman gdpr tests",
+	"main": "index.js",
+	"scripts": {
+		"testscript": "newman run/Smaple API Automation.postman_collection.json "
+	},
+	"author": "shashi",
+	"license": "ISC",
+	"dependencies": {
+		"newman": "^4.5.7",
+		"newman-reporter-html": "^1.0.5",
+		"reporter": "^0.1.0",
+		"reporters": "0.0.4"
+	}
 }
