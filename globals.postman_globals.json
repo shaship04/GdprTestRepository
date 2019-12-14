@@ -1,5 +1,5 @@
 {
-  "id": "cb299fdc-7824-bbea-ff75-55b05c438cd0",
+  "id": "0702420a-37e9-beff-3810-da9b0b1e7869",
   "name": "Postman Globals",
   "values": [
     {
@@ -16,12 +16,12 @@
     },
     {
       "key": "url",
-      "value": "http://10.78.0.182",
+      "value": "http://10.78.0.184:8080",
       "enabled": true,
       "type": "text"
     }
   ],
   "_postman_variable_scope": "globals",
-  "_postman_exported_at": "2019-12-12T19:39:11.518Z",
+  "_postman_exported_at": "2019-12-14T20:50:17.369Z",
   "_postman_exported_using": "Postman/5.0.2"
 }
