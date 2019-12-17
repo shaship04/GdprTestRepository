@@ -22,7 +22,7 @@ pipeline {
       steps {
          sh 'npm run testscript'
          archive (includes: '**.html')
- publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'newman', reportFiles: 'newmanHTML_report.html', reportName: 'HTMLReport', reportTitles: ''])         
+ publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'newman', reportFiles: 'HTML_report.html', reportName: 'HTMLReport', reportTitles: ''])         
       }
     }      
   }
