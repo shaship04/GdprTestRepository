@@ -21,6 +21,8 @@ pipeline {
     stage('Test') {
       steps {
          sh 'npm run testscript'
+         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'newman', reportFiles: 'HTML_report.html', reportName: 'APIHTML Report', reportTitles: ''])
+         
       }
     }      
   }
