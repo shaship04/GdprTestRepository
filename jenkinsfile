@@ -21,8 +21,8 @@ pipeline {
     stage('Test') {
       steps {
          sh 'npm run testscript'
-         //archive (includes: '**.html')
-publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'newman', reportFiles: 'HTML_report.html', reportName: 'HTML Report', reportTitles: ''])      }
+         archive (includes: '**.html')
+publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'newman', reportFiles: 'HTML_report.html', reportName: 'HTMLReport', reportTitles: ''])      }
     }      
   }
 }
