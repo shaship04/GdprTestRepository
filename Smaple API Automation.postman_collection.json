@@ -12,6 +12,58 @@
 			"description": "",
 			"item": [
 				{
+					"name": "GetAnonymizedUserID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"if(responseCode.code == 200){",
+									"    try",
+									"    {",
+									"        var cutomer_data = JSON.parse(responseBody),",
+									"        customerId = customer_data.results.user.psersonId;",
+									"    }",
+									"    catch(e){",
+									"        console.log(e);",
+									"    }",
+									"    postman.setGlobalVariable(\"customerId\",customerId);",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{url}}/RequestCenter/nsapi/directory/people/anonymized",
+						"method": "GET",
+						"header": [
+							{
+								"description": "",
+								"key": "username",
+								"value": "{{username}}"
+							},
+							{
+								"description": "",
+								"key": "password",
+								"value": "{{password}}"
+							},
+							{
+								"description": "",
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
 					"name": "GetPII Data",
 					"event": [
 						{
@@ -104,7 +156,7 @@
 					],
 					"request": {
 						"url": {
-							"raw": "{{url}}/RequestCenter/nsapi/transaction/requisitions/clearUserData?customerId=1",
+							"raw": "{{url}}/RequestCenter/nsapi/transaction/requisitions/clearUserData?customerId={{customerId}}",
 							"host": [
 								"{{url}}"
 							],
@@ -118,7 +170,7 @@
 							"query": [
 								{
 									"key": "customerId",
-									"value": "1",
+									"value": "{{customerId}}",
 									"equals": true,
 									"description": ""
 								}
@@ -165,7 +217,7 @@
 					],
 					"request": {
 						"url": {
-							"raw": "{{url}}/RequestCenter/nsapi/transaction/requisitions/exportPII?customerId=1&PIIOnly=true",
+							"raw": "{{url}}/RequestCenter/nsapi/transaction/requisitions/exportPII?customerId={{customerId}}&PIIOnly=true",
 							"host": [
 								"{{url}}"
 							],
@@ -179,7 +231,7 @@
 							"query": [
 								{
 									"key": "customerId",
-									"value": "1",
+									"value": "{{customerId}}",
 									"equals": true,
 									"description": ""
 								},
